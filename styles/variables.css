@@ -1,1 +1,25 @@
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+  --maain-font: 'Inter-Variable';
+  --accent-font: 'PressStart2P';
+  --header-padding-block: 122px;
+  --accent-header-title-size: 49px;
+  --accent-header-text-size: 14px;
+  --accent-text-size: 14px;
+  --main-text-size: 18px;
+  --main-title-weight: 715;
+  --main-text-weight: 410;
+  --background-gradient: repeating-linear-gradient(to bottom, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px), repeating-linear-gradient(to right, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px), linear-gradient(#e7e7e7, #1a1a1a);
+  --blok-width: clamp(320px, 100%, 700px);
+  --blok-background-color: #FFF;
+  --element-border: solid #000 2px;
+  --heart-contour: #000;
+  --heart-sparks:#FF0000;
+}
+
+@media (width > 376px) {
+  :root {
+    --header-padding-block: 130px;
+    --accent-header-title-size: 65px;
+    --accent-header-text-size: 23px;
+  }
+}
