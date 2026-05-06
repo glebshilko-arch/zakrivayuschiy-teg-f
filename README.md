@@ -1,1 +1,1 @@
-git@github.com:glebshilko-arch/zakrivayuschiy-teg-f.git
+https://github.com/glebshilko-arch/zakrivayuschiy-teg-f

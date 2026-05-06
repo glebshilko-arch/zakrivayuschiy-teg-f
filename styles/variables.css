@@ -2,8 +2,8 @@
   --maain-font: 'Inter-Variable';
   --accent-font: 'PressStart2P';
   --header-padding-block: 122px;
-  --accent-header-title-size: 49px;
-  --accent-header-text-size: 14px;
+  --accent-header-title-size: clamp(3.06rem, 2.6rem + 1.5vw, 4.06rem);
+  --accent-header-text-size: clamp(0.875rem, 0.73rem + 0.86vw, 1.4375rem);
   --accent-text-size: 14px;
   --main-text-size: 18px;
   --main-title-weight: 715;
@@ -11,7 +11,7 @@
   --background-gradient: repeating-linear-gradient(to bottom, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px), repeating-linear-gradient(to right, #d3d3d3, #d3d3d3 2px, transparent 2px, transparent 4px), linear-gradient(#e7e7e7, #1a1a1a);
   --blok-width: clamp(320px, 100%, 700px);
   --blok-background-color: #FFF;
-  --element-border: solid #000 2px;
+  --element-border: 2px solid #000;
   --heart-contour: #000;
   --heart-sparks:#FF0000;
 }
@@ -19,7 +19,5 @@
 @media (width > 376px) {
   :root {
     --header-padding-block: 130px;
-    --accent-header-title-size: 65px;
-    --accent-header-text-size: 23px;
   }
 }

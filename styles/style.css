@@ -4,17 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.page::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
   background-image: var(--background-gradient);
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .header {
@@ -23,7 +15,7 @@
   padding-block: var(--header-padding-block);
   background-color: var(--blok-background-color);
   border: var(--element-border);
-  font-family: var(--accent-font), monospace;
+  font-family: var(--accent-font), fantasy;
 }
 
 .header-elements {
@@ -46,11 +38,11 @@
   display: flex;
   flex-direction: column;
   gap: 50px;
-  width: var(--blok-width);
-  background-color: var(--blok-background-color);
+  inline-size: var(--blok-width);
 }
 
-section {
+.card {
+  background-color: var(--blok-background-color);
   border: var(--element-border);
 }
 
@@ -58,41 +50,41 @@ section {
   padding: 4px 10px;
   font-size: var(--main-text-size);
   font-family: var(--maain-font), sans-serif;
-  font-weight: var(--main-title-weight);
-  border: var(--element-border);
-  
+  font-variation-settings: 'wght' var(--main-title-weight);
+  box-sizing: border-box;
+  border-block: var(--element-border);
 }
 
-.card-image-container {
-  width: calc(var(--blok-width)-4px);
+.card-image {
+  width: var(--blok-width);
   aspect-ratio: 1 / 1;
-  background-image: url(../images/conten-image-wagon.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  display: block;
+  object-fit: cover;
+  object-position: calc(100% + 12px) center;
 }
 
-.card-image-container::after {
-  content: "</HTML>";
+.image-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay {
   position: absolute;
   width: 98px;
-  height: 14px;
   top: 25px;
   right: 25px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: var(--accent-text-size);
   opacity: 0.5;
   text-shadow: 1px  1px 0 #FFFFFF80, -1px -1px 0 #FFFFFF80, 1px -1px 0 #FFFFFF80, -1px  1px 0 #FFFFFF80;
+  mix-blend-mode: hard-light;
 }
 
 @supports((text-stroke: 2px #fff) or (-webkit-text-stroke: 2px #fff)) {
-  .card-image-container::after {
-    -webkit-text-stroke: 2px #fff;
-    text-stroke: 2px #fff;
+  .overlay {
+    -webkit-text-stroke: 1px #fff;
+    text-stroke: 1px #fff;
     text-shadow: none;
-    paint-order: stroke fill;
-    mix-blend-mode: hard-light;
   }
 }
 
@@ -102,14 +94,13 @@ section {
   gap: 25px;
   padding: 25px 25px 15px;
   font-size: var(--main-text-size);
-  border: var(--element-border);
+  border-block: var(--element-border);
 }
 
 .card-text {
   font-family: var(--maain-font), sans-serif;
-  font-weight: var(--main-text-weight);
   line-height: 1.3125rem;
-   font-variation-settings: 'slnt' 0;
+  font-variation-settings: 'wght' var(--main-text-weight);
 }
 
 .card-button-container {
@@ -121,18 +112,18 @@ section {
    width: auto;
    background-color: transparent;
    border: 2px solid #fff;
+   transition: border 0.3s ease;
 }
 
 .card__icon-button:focus-visible {
   outline: none;
   border: 2px solid #000;
-  transition: border 0.3s ease;
 }
 
 .button-common {
   width: auto;
   border: var(--element-border);
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: var(--accent-text-size);
   box-shadow: 0 0 0 0 transparent;
   transition: box-shadow 0.3s ease;
@@ -158,7 +149,6 @@ section {
 .button-common:focus {
   outline: none;
   box-shadow: 2px 2px 0 0 #000;
-  transition: box-shadow 0.3s ease;
 }
 
 .button-common::after {
@@ -176,61 +166,41 @@ section {
   transform: scaleX(1);
 }
 
-.first-sprint-start {
+.saturate-05 {
   filter: saturate(0.5);
 }
 
-.first-sprint-end {
+.saturate-3 {
   filter: saturate(3);
 }
-.second-sprint-start {
-   filter: sepia(0.6) hue-rotate(-25deg) saturate(2.5) brightness(0.85) contrast(1.2);
+.sepia-hue-rotate-saturate-brightness-contrast {
+  filter: sepia(0.6) hue-rotate(-25deg) saturate(2.5) brightness(0.85) contrast(1.2);
 }
 
-.second-sprint-end {
+.invert-08 {
   filter: invert(0.8);
 }
 
-.third-sprint-start {
+.sepia-saturate-hue-rotate {
   filter: sepia(1) saturate(1.2) hue-rotate(-10deg);
 }
 
-.third-sprint-end, .fourth-sprint {
-  background-image: none;
-  position: relative;
-  overflow: hidden;
-}
-
-.third-sprint-end::before, .fourth-sprint::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url(../images/conten-image-wagon.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-
-.third-sprint-end::before {
+.blur-20 {
   filter: blur(20px);
 }
 
-.fourth-sprint::before {
+.hue-rotate-brightness-saturate-sepia-blur {
   filter: hue-rotate(145deg) brightness(1.2) saturate(1.8) sepia(0.2) blur(2px);
 }
 
-.footer {
+.save-container {
   width: var(--blok-width);
-  background-color: var(--blok-background-color);
   padding: 50px 34px;
   display: flex;
   justify-content: center;
 }
 
-.footer-button-container {
+.save-button-container {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -238,7 +208,7 @@ section {
   padding: 15px 12px;
 }
 
-.footer-image {
+.save-image {
   width: 28px;
   height: 28px;
   fill: #fff;
@@ -251,21 +221,23 @@ section {
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px 40px;
-  width: 341px;
+  width: max-content;
 }
 
 .dialog-save::backdrop {
-  background-color: #000000BF;;
+  background-color: #000000BF;
 }
 
 .dialog-save-inform {
   display: flex;
   align-items: center;
   gap: 20px;
-  font-family: var(--accent-font);
+  font-family: var(--accent-font), fantasy;
   font-size: var(--acent-text-size);
   margin-bottom: 30px;
   line-height: 150%;
+  text-transform: uppercase;
+  width: clamp(263px, 22vw, 293px);
 }
 
 .dialog-save-image {
@@ -278,13 +250,18 @@ section {
 }
 
 @media (width > 376px) {
-  .footer-button-container {
+
+  .save-button-container {
     flex-direction: row;
     padding: 15px 12px;
   }
 
-  .footer-image {
+  .save-image {
     width: 21px;
     height: 21px;
+  }
+
+  .dialog-save {
+  padding: 30px 30px;
   }
 }
