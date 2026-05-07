@@ -105,19 +105,28 @@
 
 .card-button-container {
   display: flex;
+  gap: 7px;
   align-self: flex-end;
 }
 
 .card__icon-button {
-   width: auto;
+   width: 38px;
+   height: 38px;
    background-color: transparent;
    border: 2px solid #fff;
    transition: border 0.3s ease;
+   padding: 0;
 }
 
 .card__icon-button:focus-visible {
   outline: none;
   border: 2px solid #000;
+  display: flex;
+}
+
+.like-icon {
+  width: 34.8px;
+  height: 36px;
 }
 
 .button-common {
@@ -221,7 +230,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 30px 40px;
-  width: max-content;
+  min-width: 341px;
 }
 
 .dialog-save::backdrop {
@@ -232,21 +241,36 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  font-family: var(--accent-font), fantasy;
-  font-size: var(--acent-text-size);
   margin-bottom: 30px;
-  line-height: 150%;
-  text-transform: uppercase;
   width: clamp(263px, 22vw, 293px);
+  overflow: hidden;
+  container-type: inline-size;
 }
 
 .dialog-save-image {
   flex-shrink: 0;
 }
 
+.dialog-save-text {
+  font-family: var(--accent-font), fantasy;
+  font-size: var(--acent-text-size);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 150%;
+  min-width: 234px;
+  transform-origin: left;
+}
+
+@container (max-width: 284px) {
+  .dialog-save-text {
+    transform: scaleX(0.9);
+  }
+}
+
 .dialog-save-button {
   width: 100%;
   padding-block: 12.5px;
+  text-transform: uppercase;
 }
 
 @media (width > 376px) {
